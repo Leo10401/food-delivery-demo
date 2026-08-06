@@ -176,14 +176,14 @@ export default function ProfilePage() {
                 </div>
                 <button
                   onClick={() => setVegOnly(!vegOnly)}
-                  className={`relative h-7 w-12 rounded-full transition-colors ${
+                  className={`relative h-7 w-12 shrink-0 rounded-full transition-colors ${
                     vegOnly ? 'bg-leaf' : 'bg-border'
                   }`}
                 >
                   <motion.span
                     animate={{ x: vegOnly ? 20 : 2 }}
                     transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                    className="absolute top-0.5 size-6 rounded-full bg-card shadow-sm"
+                    className="absolute left-0 top-[2px] size-6 rounded-full bg-card shadow-sm"
                   />
                 </button>
               </div>
@@ -191,7 +191,7 @@ export default function ProfilePage() {
               {/* Spice level */}
               <div>
                 <p className="mb-2 text-sm font-bold">Spice Level</p>
-                <div className="flex gap-2">
+                <div className="flex flex-wrap gap-2">
                   {spiceLevels.map((level, i) => (
                     <button
                       key={level}
@@ -235,14 +235,14 @@ export default function ProfilePage() {
                 </div>
                 <button
                   onClick={() => setNotifications(!notifications)}
-                  className={`relative h-7 w-12 rounded-full transition-colors ${
+                  className={`relative h-7 w-12 shrink-0 rounded-full transition-colors ${
                     notifications ? 'bg-chili' : 'bg-border'
                   }`}
                 >
                   <motion.span
                     animate={{ x: notifications ? 20 : 2 }}
                     transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                    className="absolute top-0.5 size-6 rounded-full bg-card shadow-sm"
+                    className="absolute left-0 top-[2px] size-6 rounded-full bg-card shadow-sm"
                   />
                 </button>
               </div>
