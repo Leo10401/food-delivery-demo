@@ -1,0 +1,150 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@theme inline {
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-marigold: var(--marigold);
+  --color-marigold-foreground: var(--marigold-foreground);
+  --color-chili: var(--chili);
+  --color-chili-foreground: var(--chili-foreground);
+  --color-leaf: var(--leaf);
+  --color-leaf-foreground: var(--leaf-foreground);
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: light;
+  /* Spice bazaar palette */
+  --background: #fff4e2; /* warm cream */
+  --foreground: #2b1210; /* deep tamarind ink */
+  --card: #fffdf7;
+  --card-foreground: #2b1210;
+  --popover: #fffdf7;
+  --popover-foreground: #2b1210;
+  --primary: #e23e1d; /* chili */
+  --primary-foreground: #fff4e2;
+  --secondary: #f6e3c4;
+  --secondary-foreground: #2b1210;
+  --muted: #f6e3c4;
+  --muted-foreground: #6f4a3a;
+  --accent: #ffb320; /* marigold */
+  --accent-foreground: #2b1210;
+  --destructive: #c22a10;
+  --border: #ecd7b4;
+  --input: #ecd7b4;
+  --ring: #e23e1d;
+  --radius: 1rem;
+
+  --ink: #2b1210;
+  --ink-foreground: #fff4e2;
+  --marigold: #ffb320;
+  --marigold-foreground: #2b1210;
+  --chili: #e23e1d;
+  --chili-foreground: #fff4e2;
+  --leaf: #1f6e4a;
+  --leaf-foreground: #fff4e2;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    /* Ensure content doesn't get hidden behind bottom nav on mobile */
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+}
+
+/* ---- Signature motion: the rotating thali ring ---- */
+@keyframes thali-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes thali-spin-reverse {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.thali-ring {
+  animation: thali-spin 48s linear infinite;
+}
+
+.thali-item {
+  animation: thali-spin-reverse 48s linear infinite;
+}
+
+/* ---- Marquee strip ---- */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 28s linear infinite;
+}
+
+/* ---- Order progress pulse ---- */
+@keyframes status-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.status-active {
+  animation: status-pulse 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thali-ring,
+  .thali-item,
+  .marquee-track,
+  .status-active {
+    animation: none;
+  }
+}
